@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title= title
+
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet')
+    link(href='https://getbootstrap.com/docs/5.3/assets/css/docs.css' rel='stylesheet')
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js')
+
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css", integrity="sha384-rU0aCddZdwgBIldzWabtVtOnIxy1rY3OVzvO9cmwDNcxI8bDk/Fl-2A+QwrI1yfX")
+
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      .container-fluid
+        a.navbar-brand(href='#') 
+        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarNavDropdown.collapse.navbar-collapse
+          ul.navbar-nav
+            li.nav-item.dropdown
+              a#navbarDropdownMenuLinkAbout.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+                | Ayuda
+              ul.dropdown-menu(aria-labelledby='navbarDropdownMenuLinkAbout')
+                li
+                  a#aboutLink.dropdown-item(href='#') A cerca de
+            li.nav-item.dropdown
+              a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+                | Operaciones 
+              ul.dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+                li
+                  a#tablaMultiplicarLink.dropdown-item(href='#') Tabla de multiplicar
+                li
+                  
+                  a#generarQuiniela.dropdown-item(href='#') Generar quiniela
+                li
+                  a#salirLink.dropdown-item(href='#') Salir
+
+    block content

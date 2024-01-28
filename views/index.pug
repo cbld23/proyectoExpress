@@ -1,0 +1,71 @@
+extends layout
+
+block content
+  h1 Tabla de multiplicar
+  form#multiplicarForm(action='/multiplicar', method='post')
+    label(for='base') ¿Base de multiplicación?
+    input#base(type='number', name='base', required)
+    button(type='submit') Enviar 
+  #multiplicarContainer
+  if resultado
+    p!= resultado.html
+  else if error
+    p.error= error
+  #quinielaContainer
+    
+  // Contenido de la modal
+  .modal.fade#aboutModal(tabindex='-1', aria-labelledby='aboutModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h5.modal-title#aboutModalLabel Acerca de
+          button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+        .modal-body
+          p Contenido de la ventana modal
+        .modal-footer
+          button.btn.btn-secondary(type='button', data-bs-dismiss='modal') Cerrar
+
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js')
+
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      const socket = io();
+
+      document.getElementById('generarQuiniela').addEventListener('click', function() {
+        socket.emit('generarQuiniela');
+      });
+
+      socket.on('quinielaGenerada', function(quiniela) {
+        console.log('Quiniela Generada:', quiniela);
+        const quinielaContainer = document.getElementById('quinielaContainer');
+        quinielaContainer.innerHTML = '';
+
+        const h2 = document.createElement('h2');
+        h2.textContent = 'Quiniela Generada';
+        h2.classList.add('quiniela-title');
+        quinielaContainer.appendChild(h2);
+
+        const ul = document.createElement('ul');
+        ul.classList.add('quiniela-list'); 
+        quiniela.forEach(function(resultado) {
+          const li = document.createElement('li');
+          li.textContent = resultado;
+          li.classList.add('quiniela-item');
+          ul.appendChild(li);
+        });
+        quinielaContainer.appendChild(ul);
+      });
+
+      document.getElementById('salirLink').addEventListener('click', function() {
+        const quinielaContainer = document.getElementById('quinielaContainer');
+        quinielaContainer.innerHTML = '';
+        
+        const multiplicarContainer = document.getElementById('multiplicarContainer');
+        multiplicarContainer.innerHTML = '';
+      });
+
+      const aboutModal = new bootstrap.Modal(document.getElementById('aboutModal'));
+      document.getElementById('aboutLink').addEventListener('click', function() {
+        aboutModal.show();
+      });
+    });

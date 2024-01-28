@@ -1,0 +1,71 @@
+body {
+  background-color: rgb(171, 181, 210);
+}
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: blue;
+}
+
+div {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+input {
+  padding:5px; 
+  border:2px solid #ccc; 
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+input:focus {
+  border-color:#333;
+}
+
+input[type=submit] {
+  padding:5px 15px; 
+  background:#ccc; 
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+}
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border: 2p solid black;
+  border-collapse: collapse;
+}
+tr:nth-child(even) {
+  background-color: #5b7e7e;
+}
+td {
+  font-family: "Lucida Console", "Courier New", monospace;
+  text-align: center;
+}
+/* Estilos para la quiniela */
+.quiniela-title {
+  color: #e74c3c; /* Rojo oscuro para el título */
+  font-size: 28px;
+  margin-bottom: 15px;
+  text-align: center; /* Centrar el título */
+}
+
+.quiniela-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex; /* Mostrar la lista en línea */
+  justify-content: space-around; /* Espaciado uniforme entre elementos */
+  flex-wrap: wrap; /* Envolver elementos en una nueva línea cuando no haya espacio */
+}
+
+.quiniela-item {
+  background-color: #5b7e7e;
+  margin: 10px; 
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #fff; 
+  font-size: 18px;
+  text-align: center; 
+  width: 150px; 
+}
